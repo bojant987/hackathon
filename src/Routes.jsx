@@ -3,7 +3,8 @@ import { connect, Provider } from 'react-redux';
 import { IndexRoute, withRouter, Redirect } from 'react-router';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
-import store from './Redux/store';
+import AppHeader from './Components/Header';
+import AppFooter from './Components/Footer';
 
 import { SignUp } from './Components/Auth/LoadableAuth';
 import { Login } from './Components/Auth/LoadableAuth';
@@ -30,7 +31,7 @@ class _Routes extends React.Component {
     }
 
     static defaultProps = {
-        user: {} // delete this thing when real auth is implemented
+        user: { admin: true } // delete this thing when real auth is implemented
     };
 
     withLoginRedirect(Component, user) {
@@ -51,49 +52,83 @@ class _Routes extends React.Component {
 
     render() {
         return (
-            <HashRouter>
-                <Switch>
+            <div>
+                {/*<AppHeader/>*/}
+                <HashRouter>
+                    <Switch>
 
-                    {/* Home */}
-                    <Route exact path="/" render={() => {
-                        return this.withLoginRedirect(Home, this.props.user)
-                    }} />
+                        {/* Home */}
+                        <Route exact path="/">
+                            <div>
+                                <AppHeader/>
+                                <main>
+                                    {this.withLoginRedirect(Home, this.props.user)}
+                                </main>
+                                <AppFooter/>
+                            </div>
+                        </Route>
 
-                    {/*User singup */}
-                    <Route path="/signup" component={SignUp} />
-                    {/*User login */}
-                    <Route path="/login/:reset?" component={LoginWithRouter} />
-                    {/* User logout */}
-                    <Route path="/logout" component={LogoutWithRouter} />
-                    {/* User forgot password */}
-                    <Route path="/forgotpassword" component={ForgotPassword} />
-                    {/* User new password */}
+                        {/*User singup */}
+                        <Route path="/signup" component={SignUp} />
+                        {/*User login */}
+                        <Route path="/login/:reset?" component={LoginWithRouter} />
+                        {/* User logout */}
+                        <Route path="/logout" component={LogoutWithRouter} />
+                        {/* User forgot password */}
+                        <Route path="/forgotpassword" component={ForgotPassword} />
+                        {/* User new password */}
 
 
-                    {/* Profile */}
-                    <Route path="/profile/:user?" render={() => {
-                        return this.withLoginRedirect(Profile, this.props.user)
-                    }} />
-                    {/* Order */}
-                    <Route path="/order" render={() => {
-                        return this.withLoginRedirect(Order, this.props.user)
-                    }} />
-                    {/* Foods */}
-                    <Route path="/food" render={() => {
-                        return this.withLoginRedirect(Food, this.props.user)
-                    }} />
-                    {/* Manage orders */}
-                    <Route path="/manageorders" render={() => {
-                        return this.withAdminAccess(ManageOrders, this.props.user)
-                    }} />
+                        {/* Profile */}
+                        <Route path="/profile/:user?">
+                            <div>
+                                <AppHeader/>
+                                <main>
+                                    {this.withLoginRedirect(Profile, this.props.user)}
+                                </main>
+                                <AppFooter/>
+                            </div>
+                        </Route>
+                        {/* Order */}
+                        <Route path="/order">
+                            <div>
+                                <AppHeader/>
+                                <main>
+                                    {this.withLoginRedirect(Order, this.props.user)}
+                                </main>
+                                <AppFooter/>
+                            </div>
+                        </Route>
+                        {/* Food */}
+                        <Route path="/food">
+                            <div>
+                                <AppHeader/>
+                                <main>
+                                    {this.withLoginRedirect(Food, this.props.user)}
+                                </main>
+                                <AppFooter/>
+                            </div>
+                        </Route>
+                        {/* Manage orders */}
+                        <Route path="/manageorders">
+                            <div>
+                                <AppHeader user={this.props.user}/>
+                                <main>
+                                    {this.withAdminAccess(ManageOrders, this.props.user)}
+                                </main>
+                                <AppFooter/>
+                            </div>
+                        </Route>
 
-                    {/* Global forbidden redirect */}
-                    <Route path="/forbidden" component={Error403WithRouter} />
-                    {/*/!*Find solution for this*!/*/}
-                    {/*<Route component={Error404WithRouter} />*/}
+                        {/* Global forbidden redirect */}
+                        <Route path="/forbidden" component={Error403WithRouter} />
+                        {/*/!*Find solution for this*!/*/}
+                        {/*<Route component={Error404WithRouter} />*/}
 
-                </Switch>
-            </HashRouter>
+                    </Switch>
+                </HashRouter>
+                {/*<AppFooter/>*/}
+            </div>
         );
     }
 }
@@ -113,15 +148,5 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-const Routes =  connect(mapStateToProps, mapDispatchToProps)(_Routes);
-
-export default class extends React.Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Routes {...this.props} />
-            </Provider>
-        );
-    }
-}
+export default connect(mapStateToProps, mapDispatchToProps)(_Routes);
 

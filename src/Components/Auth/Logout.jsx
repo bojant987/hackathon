@@ -1,13 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class Logout extends React.Component {
+const Logout = (props) => {
+    // clear user here...or don't
+    console.log(props.history);
+    props.history.replace('/login');
 
+    return null;
+};
 
-    render() {
-        return(
-            <div>
-
-            </div>
-        );
-    }
-}
+export default withRouter(Logout);

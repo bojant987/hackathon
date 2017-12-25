@@ -37,7 +37,7 @@ export class ForgotPassword extends React.Component {
 }
 
 const LoadableLogout = Loadable({
-    loader: () => import('./ForgotPassword'),
+    loader: () => import('./Logout'),
     loading: PageLoading,
 });
 

@@ -1,0 +1,107 @@
+@import "../base/variables";
+
+.HeaderLayout {
+  position: relative;
+}
+
+.Header {
+  padding: 10px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (min-width: $tabletLandscape) {
+    position: relative;
+    height: 64px;
+    flex-wrap: nowrap;
+  }
+
+  @media (min-width: $tabletLandscape) {
+    padding: 0 50px;
+  }
+}
+
+.Navigation {
+  flex: 0 1 80%;
+
+  @media (max-width: $tabletLandscape) {
+    flex: 0 1 100%;
+  }
+}
+
+.Navigation__item {
+  width: 22%;
+  text-align: center;
+
+  @media (max-width: $tabletLandscape) {
+    width: 100%;
+    padding: 10px;
+    height: auto;
+  }
+}
+
+.MenuCollapse {
+  margin: 0 0 8px 10px;
+
+  @media (min-width: $tabletLandscape) {
+    display: none;
+  }
+}
+
+.Navigation__brand {
+  background-color: transparent !important;
+}
+
+.Navigation__brandText {
+  font-size: 32px;
+  font-family: 'Lobster', cursive;
+
+  @media (min-width: $tabletLandscape) {
+    font-size: 24px;
+  }
+
+  @media (min-width: $tabletLandscape) {
+    font-size: 32px;
+  }
+}
+
+.Navigation__options {
+  width: 9%;
+  margin-left: 1%;
+  text-align: right;
+  font-size: 24px;
+  position: relative;
+
+  @media (max-width: $tabletLandscape) {
+    width: 100%;
+    margin-left: 0%;
+  }
+}
+
+.NavigationFake {
+
+  @media (min-width: $tabletLandscape) {
+    width: 20%;
+  }
+}
+
+.Navigation__optionsButton {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: none;
+  top: 0;
+  left: 0;
+
+  &:hover, &:focus {
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.Navigation__optionsButtonIcon {
+  color: $primaryText;
+}

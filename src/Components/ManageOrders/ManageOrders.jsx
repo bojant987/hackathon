@@ -1,13 +1,17 @@
 import React from 'react';
+import { Layout } from 'antd';
+const { Content } = Layout;
 
 export default class ManageOrders extends React.Component {
 
 
     render() {
         return(
-            <div>
-
-            </div>
+            <Layout>
+                <Content>
+                    Manage orders
+                </Content>
+            </Layout>
         );
     }
 }

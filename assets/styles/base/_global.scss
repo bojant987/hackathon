@@ -1,4 +1,22 @@
+@import "variables";
+
 main {
-  min-height: 90vh;
+  min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
   position: relative;
+
+  > .ant-layout {
+    min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+    background-color: $passiveGray;
+    padding: 10px;
+
+    @media (min-width: $tabletLandscape) {
+      padding: 50px;
+    }
+
+    > .ant-layout-content {
+      //min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+      min-height: 100%;
+      background-color: #fff;
+    }
+  }
 }

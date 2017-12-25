@@ -1,5 +1,9 @@
 // Primary colors
-
+$primary: #1890ff;
+$primaryDark: #001529;
+$light: #fff;
+$primaryText: rgba(255, 255, 255, 0.65);
+$passiveGray: #F0F2F5;
 
 // Secondary colors
 
@@ -18,3 +22,6 @@ $tabletPortrait: 768px;
 $phablet: 640px;
 $mobile: 480px;
 $bootstrapThreshold: 520px;
+
+$headerHeight: 64px;
+$footerHeight: 48px;
