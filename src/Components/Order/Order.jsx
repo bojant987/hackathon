@@ -5,7 +5,7 @@ import { Input, Button, Row, Col } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { switchDay, fetchMenu, saveOrder, addItem, removeItem } from '../../Redux/actionCreators';
+import { switchDay, fetchMenu, saveOrder, addItem, removeItem, fetchOrders } from '../../Redux/actionCreators';
 
 import DayTabs from './DayTabs';
 
@@ -23,6 +23,10 @@ class Order extends React.Component {
 
     componentDidMount() {
         this.props.fetchMenu();
+
+        if (false && this.state.name) {
+        	this.props.fetchOrders(this.state.name);
+    	}
     }
 
     onTabChange = (activeKey) => {
@@ -100,6 +104,7 @@ const mapDispatchToProps = dispatch => {
             addItem,
             removeItem,
             saveOrder,
+            fetchOrders,
 		},
 		dispatch
 	);

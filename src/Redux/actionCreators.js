@@ -206,30 +206,30 @@ function requestOrders() {
 	};
 }
 
-function receiveOrder(data) {
+function receiveOrders(data) {
 	return {
 		type: actionTypes.RECEIVE_ORDER,
 		payload: data,
 	};
 }
 
-function orderError(error) {
+function ordersError(error) {
 	return {
 		type: actionTypes.ORDER_ERROR,
 		payload: error,
 	};
 }
 
-export function fetchOrders() {
+export function fetchOrders(name) {
 	return dispatch => {
-		dispatch(requestOrder());
+		dispatch(requestOrders());
 
-		axios.get(baseUrl+'something').then(response => {
-			dispatch(receiveOrder(response));
+		axios.get(baseUrl+`order?name=${name}&day=0`).then(response => {
+			dispatch(receiveOrders(response.data));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
 
-			dispatch(orderError(message));
+			dispatch(ordersError(message));
 		});
 	};
 }
