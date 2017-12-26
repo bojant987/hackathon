@@ -111,6 +111,7 @@ export function saveOrder(day, name) {
 		const foodItems = store.getState().order.items[day];
 
 		axios.post(baseUrl+'order', JSON.stringify({day, name, foodItems})).then(response => {
+			localStorage.setItem('name', name);
 			dispatch(saveOrderSuccess());
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
