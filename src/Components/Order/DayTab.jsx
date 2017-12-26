@@ -14,7 +14,7 @@ export default props => (
 						day={props.day}
 						onSelect={props.addFood}
 						onRemove={props.removeFood}
-						selected={props.selectedItems[props.day].includes(foodItem.id)}
+						selected={props.selectedItems[props.day] && props.selectedItems[props.day].includes(foodItem.id)}
 					/>
 				</Col>
 			) : null;
