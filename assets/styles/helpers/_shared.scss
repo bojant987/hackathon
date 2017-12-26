@@ -1,0 +1,12 @@
+// Helpers for shared items
+// NOTE: never use two helpers that can cancel each other
+//----------------------------------------------------------------------------------------------------------------------
+
+.h-boldTxt {
+	font-weight: bold;
+}
+
+.h-fullWide {
+	display: inline-block;
+	width: 100%;
+}

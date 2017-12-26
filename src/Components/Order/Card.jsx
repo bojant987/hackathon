@@ -3,19 +3,44 @@ import { Card, Icon, Avatar } from 'antd';
 const { Meta } = Card;
 
 export default class CardComponent extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.addToOrder = ::this.addToOrder;
+
+		this.state = {
+			item: {
+				title: 'Card Title',
+				img: 'https://www.donesi.com/images/product/48/13248.jpg',
+				description: 'Some text to be here so we can see if everything is fine with text and other stuff',
+				price: '240 rsd',
+			},
+		};
+	}
+
+	addToOrder() {
+		console.log('___ > > > CLICK ON CARD !!!');
+	}
+
 	render() {
 		return (
 			<Card
-				style={{ width: 300 }}
-				cover={<img alt={this.props.item.title} src={this.props.item.img} />}
-				actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+				className="ant-card-overwrite"
+				cover={<img alt={this.state.item.title} src={this.state.item.img} />}
+				actions={[
+					<span className="h-fullWide" onClick={this.addToOrder}>
+						<Icon type="check" /> Add to order
+					</span>,
+				]}
+				title={this.state.item.title}
+				hoverable
 			>
-				<Meta
-					avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-					title={this.props.item.title}
-					description={this.props.item.description}
-                    price={this.props.item.price}
-				/>
+				<p>
+					<span className="h-boldTxt">Description :</span> {this.state.item.description}
+				</p>
+				<p>
+					<span className="h-boldTxt">Price :</span> {this.state.item.price}
+				</p>
 			</Card>
 		);
 	}

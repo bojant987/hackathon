@@ -2,9 +2,11 @@
 @import './base/global';
 @import './helpers/paddings';
 @import './helpers/margins';
+@import './helpers/shared';
 @import './components/login';
 @import './components/page-loading';
 @import './components/header';
 @import './components/footer';
 @import './components/options-dropdown';
 @import './components/day-tabs';
+@import './components/card';
