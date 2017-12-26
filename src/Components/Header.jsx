@@ -47,9 +47,10 @@ class AppHeader extends React.Component {
                         className="NavigationFake"
                     >
                         <Menu.Item key="/" className="Navigation__brand">
-                            <Link to="/">
-                                <span className="Navigation__brandText">Order it!</span>
-                            </Link>
+                            {/*<Link to="/">*/}
+                                {/**/}
+                            {/*</Link>*/}
+                            <span className="Navigation__brandText">Order it!</span>
                         </Menu.Item>
                     </Menu>
                     {!this.state.isMenuCollapsed
@@ -60,8 +61,8 @@ class AppHeader extends React.Component {
                             theme="dark"
                             className="Navigation"
                         >
-                            <Menu.Item key="/order" className="Navigation__item">
-                                <Link to="/order">
+                            <Menu.Item key="/" className="Navigation__item">
+                                <Link to="/">
                                     <Icon type="smile-o" />Order
                                 </Link>
                             </Menu.Item>

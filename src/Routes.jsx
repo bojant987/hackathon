@@ -12,7 +12,6 @@ import { Logout } from './Components/Auth/LoadableAuth';
 import { Error403 } from './Components/Auth/LoadableAuth';
 import { ForgotPassword } from './Components/Auth/LoadableAuth';
 
-import { Home } from './Components/Home/LoadableHome';
 import { Food } from './Components/Food/LoadableFood';
 import { Order } from './Components/Order/LoadableOrder';
 import { Profile } from './Components/Profile/LoadableProfile';
@@ -57,12 +56,12 @@ class _Routes extends React.Component {
                 <HashRouter>
                     <Switch>
 
-                        {/* Home */}
+                        {/* Home / Order */}
                         <Route exact path="/">
                             <div>
                                 <AppHeader/>
                                 <main>
-                                    {this.withLoginRedirect(Home, this.props.user)}
+                                    {this.withLoginRedirect(Order, this.props.user)}
                                 </main>
                                 <AppFooter/>
                             </div>
@@ -85,16 +84,6 @@ class _Routes extends React.Component {
                                 <AppHeader/>
                                 <main>
                                     {this.withLoginRedirect(Profile, this.props.user)}
-                                </main>
-                                <AppFooter/>
-                            </div>
-                        </Route>
-                        {/* Order */}
-                        <Route path="/order">
-                            <div>
-                                <AppHeader/>
-                                <main>
-                                    {this.withLoginRedirect(Order, this.props.user)}
                                 </main>
                                 <AppFooter/>
                             </div>
