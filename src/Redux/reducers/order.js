@@ -4,6 +4,7 @@ const initialState = {
 	name: '',
 	currentDay: 0,
 	items: {},
+	loading: false,
 	saving: false,
 	error: null,
 };
@@ -47,7 +48,26 @@ const actionHandlers = {
 		...state,
 		error: action.payload,
 		saving: false,
-	}),	
+	}),
+
+	[actionTypes.REQUEST_ORDER]: (state, action) => ({
+		...state,
+		error: initialState.error,
+		loading: true,
+	}),
+
+	[actionTypes.RECEIVE_ORDER]: (state, action) => ({
+		...state,
+		error: initialState.error,
+		items: action.payload,
+		loading: false,
+	}),
+
+	[actionTypes.ORDER_ERROR]: (state, action) => ({
+		...state,
+		error: action.payload,
+		loading: false,
+	}),
 };
 
 export default function(state = initialState, action) {

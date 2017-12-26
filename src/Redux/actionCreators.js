@@ -101,11 +101,11 @@ function saveOrderError() {
 	};
 }
 
-export function saveOrder() {
+export function saveOrder(day) {
 	return dispatch => {
 		dispatch(saveOrderStart());
 
-		axios.post(baseUrl+'order', JSON.stringify({})).then(response => {
+		axios.post(baseUrl+'order', JSON.stringify({day})).then(response => {
 			dispatch(saveOrderSuccess());
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
@@ -115,8 +115,106 @@ export function saveOrder() {
 	};
 }
 
-export function fetchDailySummary() {}
+function requestDaily() {
+	return {
+		type: actionTypes.REQUEST_DAILY,
+	};
+}
 
-export function fetchWeeklySummary() {}
+function receiveDaily(day, data) {
+	return {
+		type: actionTypes.RECEIVE_DAILY,
+		day,
+		payload: data,
+	};
+}
 
-export function fetchOrder(day) {}
+function dailyError(day, error) {
+	return {
+		type: actionTypes.DAILY_ERROR,
+		day,
+		payload: error,
+	};
+}
+
+export function fetchDailySummary(day) {
+	return dispatch => {
+		dispatch(requestDaily());
+
+		axios.get(baseUrl+'daily?day='+day).then(response => {
+			dispatch(receiveDaily(day, response));
+		}).catch(error => {
+			const message = error.response || error.message || 'error';
+
+			dispatch(dailyError(day, message));
+		});
+	};
+}
+
+function requestWeekly() {
+	return {
+		type: actionTypes.REQUEST_WEEKLY,
+	};
+}
+
+function receiveWeekly(data) {
+	return {
+		type: actionTypes.RECEIVE_WEEKLY,
+		payload: data,
+	};
+}
+
+function weeklyError(error) {
+	return {
+		type: actionTypes.DAILY_ERROR,
+		payload: error,
+	};
+}
+
+export function fetchWeeklySummary() {
+	return dispatch => {
+		dispatch(requestWeekly());
+
+		axios.get(baseUrl+'weekly').then(response => {
+			dispatch(receiveWeekly(response));
+		}).catch(error => {
+			const message = error.response || error.message || 'error';
+
+			dispatch(weeklyError(message));
+		});
+	};
+}
+
+function requestOrders() {
+	return {
+		type: actionTypes.REQUEST_ORDER,
+	};
+}
+
+function receiveOrder(data) {
+	return {
+		type: actionTypes.RECEIVE_ORDER,
+		payload: data,
+	};
+}
+
+function orderError(error) {
+	return {
+		type: actionTypes.ORDER_ERROR,
+		payload: error,
+	};
+}
+
+export function fetchOrders() {
+	return dispatch => {
+		dispatch(requestOrder());
+
+		axios.get(baseUrl+'order').then(response => {
+			dispatch(receiveOrder(response));
+		}).catch(error => {
+			const message = error.response || error.message || 'error';
+
+			dispatch(orderError(message));
+		});
+	};
+}

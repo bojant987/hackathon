@@ -21,4 +21,8 @@ export default keyMirror({
 	REQUEST_WEEKLY: null,
 	RECEIVE_WEEKLY: null,
 	WEEKLY_ERROR: null,
+
+	REQUEST_ORDER: null,
+	RECEIVE_ORDER: null,
+	ORDER_ERROR: null,
 });
