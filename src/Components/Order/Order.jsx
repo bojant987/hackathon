@@ -4,9 +4,8 @@ const { Content } = Layout;
 import { Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import uniq from 'lodash.uniq';
 
-import { switchDay, fetchMenu, saveOrder } from '../../Redux/actionCreators';
+import { switchDay, fetchMenu, saveOrder, addItem, removeItem } from '../../Redux/actionCreators';
 
 import DayTabs from './DayTabs';
 
@@ -35,29 +34,29 @@ class Order extends React.Component {
         this.setState({ name: event.target.value });
     };
 
-    addFood = (day, foodId) => {
-        const newSelection = {
-        ...this.state.selectedFood,
-                [day]: this.state.selectedFood[day] ? [...this.state.selectedFood[day], foodId] : [foodId]
-        };
-
-        this.setState({
-            selectedFood: newSelection,
-        });
-    };
-
-    removeFood = (day, foodId) => {
-        const newSelection = {
-            ...this.state.selectedFood,
-            [day]: this.state.selectedFood[day].filter((id) => {
-                 return id !== foodId;
-            })
-        };
-
-        this.setState({
-            selectedFood: newSelection,
-        });
-    };
+    // addFood = (day, foodId) => {
+    //     const newSelection = {
+    //     ...this.state.selectedFood,
+    //             [day]: this.state.selectedFood[day] ? [...this.state.selectedFood[day], foodId] : [foodId]
+    //     };
+    //
+    //     this.setState({
+    //         selectedFood: newSelection,
+    //     });
+    // };
+    //
+    // removeFood = (day, foodId) => {
+    //     const newSelection = {
+    //         ...this.state.selectedFood,
+    //         [day]: this.state.selectedFood[day].filter((id) => {
+    //              return id !== foodId;
+    //         })
+    //     };
+    //
+    //     this.setState({
+    //         selectedFood: newSelection,
+    //     });
+    // };
 
     render() {
         console.log(this.state.selectedFood);
@@ -80,8 +79,8 @@ class Order extends React.Component {
                         activeKey={this.state.activeKey}
                         menu={this.props.menuByDay}
                         menuAll={this.props.menuAll}
-                        addFood={this.addFood}
-                        removeFood={this.removeFood}
+                        addFood={this.addItem}
+                        removeFood={this.removeItem}
                     />
                 </Content>
             </Layout>
@@ -103,6 +102,8 @@ const mapDispatchToProps = dispatch => {
 		{
 			switchDay,
 			fetchMenu,
+            addItem,
+            removeItem,
 		},
 		dispatch
 	);
