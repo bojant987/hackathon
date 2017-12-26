@@ -50,7 +50,7 @@ class AppHeader extends React.Component {
                             {/*<Link to="/">*/}
                                 {/**/}
                             {/*</Link>*/}
-                            <span className="Navigation__brandText">Order it!</span>
+                            <span className="Navigation__brandText logoIcon">Order it!</span>
                         </Menu.Item>
                     </Menu>
                     {!this.state.isMenuCollapsed
@@ -63,22 +63,22 @@ class AppHeader extends React.Component {
                         >
                             <Menu.Item key="/" className="Navigation__item">
                                 <Link to="/">
-                                    <Icon type="smile-o" />Order
+                                    <Icon type="appstore-o" />Order
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="/food" className="Navigation__item">
                                 <Link to="/food">
-                                    <Icon type="smile-o" />Hall Of Fame
+                                    <Icon type="rocket" />Feeling lucky!
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="/profile" className="Navigation__item">
                                 <Link to="/profile">
-                                    <Icon type="user" />Profile
+                                    <Icon type="like-o" />Hall of Fame
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="/manageorders" className="Navigation__item">
                                 <Link to="/manageorders">
-                                    <Icon type="setting" />Manage Orders
+                                    <Icon type="edit" />Manage Orders
                                 </Link>
                             </Menu.Item>
                             <Menu.Item

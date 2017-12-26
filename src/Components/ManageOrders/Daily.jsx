@@ -1,5 +1,7 @@
 import React from 'react';
-import { Table, Button } from 'antd';
+import { Table } from 'antd';
+import { Select } from 'antd';
+const Option = Select.Option;
 
 export default class Daily extends React.Component {
     constructor(props) {
@@ -36,6 +38,20 @@ export default class Daily extends React.Component {
 
         return(
             <div>
+                <div>
+                    <Select
+                        defaultValue="0"
+                        style={{ width: 300, height: 48, }}
+                        onChange={this.props.handleSelectDay}
+                        value={this.props.selectedDay}
+                    >
+                        <Option value="0">Monday</Option>
+                        <Option value="1">Tuesday</Option>
+                        <Option value="2">Wednesday</Option>
+                        <Option value="3">Thursday</Option>
+                        <Option value="4">Friday</Option>
+                    </Select>
+                </div>
                 <Table columns={columns} dataSource={data} pagination={false} loading={this.props.loading} />
             </div>
         );
