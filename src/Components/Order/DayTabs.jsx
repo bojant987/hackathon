@@ -101,6 +101,3 @@ export default class DayTabs extends React.Component {
         );
     }
 }
-
-
-
