@@ -23,14 +23,27 @@
 	}
 
 	.ant-card-actions {
-		li span {
-			width: 100%;
-		}
+		li {
+            margin: 0;
+
+            span {
+                display: inline-block;
+                width: 100%;
+
+                span {
+                    padding: 10px 0;
+                }
+            }
+        }
 	}
 }
 
 .ant-card-overwrite--checked {
     border: 2px solid green;
+
+    &:hover {
+        border-color: green;
+    }
 
     .ant-card-cover {
         background-color: green;
