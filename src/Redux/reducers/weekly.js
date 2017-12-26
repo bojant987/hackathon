@@ -1,24 +1,24 @@
 import actionTypes from '../constants/actionTypes';
 
 const initialState = {
-	data: [],
+	data: null,
 	loading: false,
 	error: null,
 };
 
 const actionHandlers = {
-	[actionTypes.REQUEST_DAILY]: (state, action) => ({
+	[actionTypes.REQUEST_WEEKLY]: (state, action) => ({
 		loading: true,
 		error: initialState.error,
 	}),
 
-	[actionTypes.RECEIVE_DAILY]: (state, action) => ({
+	[actionTypes.RECEIVE_WEEKLY]: (state, action) => ({
 		data: action.payload,
 		loading: false,
 		error: initialState.error,
 	}),
 
-	[actionTypes.DAILY_ERROR]: (state, action) => ({
+	[actionTypes.WEEKLY_ERROR]: (state, action) => ({
 		loading: false,
 		error: action.payload,
 	}),

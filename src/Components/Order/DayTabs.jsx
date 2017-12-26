@@ -11,7 +11,7 @@ export default class DayTabs extends React.Component {
 
     render() {
         return (
-            <Tabs className="DayTabs" onChange={this.props.onTabChange} activeKey={this.props.activeKey}>
+            <Tabs className="DayTabs h-layoutWidth90" onChange={this.props.onTabChange} activeKey={this.props.activeKey}>
                 <TabPane tab="Mon" key="0" className="DayTabsPane">
                     <Row type="flex" justify="space-around" align="middle">
                         {this.props.menu['0'].map((id) => {
@@ -21,8 +21,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={0}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[0].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;
@@ -38,8 +39,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={1}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[1].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;
@@ -55,8 +57,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={2}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[2].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;
@@ -72,8 +75,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={3}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[3].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;
@@ -89,8 +93,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={4}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[4].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;

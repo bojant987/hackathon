@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import baseUrl from './constants/baseUrl';
 import actionTypes from './constants/actionTypes';
+import store from './store';
 
 function requestMenu() {
 	return {
@@ -107,7 +108,9 @@ export function saveOrder(day, name) {
 	return dispatch => {
 		dispatch(saveOrderStart());
 
-		axios.post(baseUrl+'order', JSON.stringify({day, name})).then(response => {
+		const foodItems = store.getState().order.items[day];
+
+		axios.post(baseUrl+'order', JSON.stringify({day, name, foodItems})).then(response => {
 			dispatch(saveOrderSuccess());
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
@@ -143,7 +146,7 @@ export function fetchDailySummary(day) {
 	return dispatch => {
 		dispatch(requestDaily());
 
-		axios.get(baseUrl+'daily?day='+day).then(response => {
+		axios.get(baseUrl+'order?day='+day).then(response => {
 			dispatch(receiveDaily(day, response));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
@@ -177,7 +180,7 @@ export function fetchWeeklySummary() {
 	return dispatch => {
 		dispatch(requestWeekly());
 
-		axios.get(baseUrl+'weekly').then(response => {
+		axios.get(baseUrl+'order').then(response => {
 			dispatch(receiveWeekly(response));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
@@ -211,7 +214,7 @@ export function fetchOrders() {
 	return dispatch => {
 		dispatch(requestOrder());
 
-		axios.get(baseUrl+'order').then(response => {
+		axios.get(baseUrl+'something').then(response => {
 			dispatch(receiveOrder(response));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';

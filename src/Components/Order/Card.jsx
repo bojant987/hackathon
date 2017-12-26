@@ -5,20 +5,18 @@ const { Meta } = Card;
 export default class CardComponent extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-		    itemSelected: false,
-        };
 	}
 
 	handleSelection = () => {
-	    if (this.state.itemSelected) {
-	        this.props.removeFood(this.props.day, this.props.item.id);
-        } else {
-            this.props.addFood(this.props.day, this.props.item.id);
-        }
-
-	    this.setState({ itemSelected: !this.state.itemSelected });
+		if (this.props.selected) {
+			if (this.props.onRemove) {
+				this.props.onRemove(this.props.day, this.props.item.id);
+			}
+		} else {
+			if (this.props.onSelect) {
+				this.props.onSelect(this.props.day, this.props.item.id);
+			}
+		}
     };
 
 	render() {
@@ -30,7 +28,7 @@ export default class CardComponent extends React.Component {
 					<span
                         className="h-fullWide"
                         onClick={this.handleSelection}
-                        style={ this.state.itemSelected ? { "color": "#1890ff" } : { "color": "rgba(0, 0, 0, 0.65)" } }
+                        style={ this.props.selected ? { "color": "#1890ff" } : { "color": "rgba(0, 0, 0, 0.65)" } }
                     >
 						<Icon type="check" /> Add to order
 					</span>,
