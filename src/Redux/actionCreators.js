@@ -69,16 +69,18 @@ export function setName(name) {
 	};
 }
 
-export function addItem(item) {
+export function addItem(day, item) {
 	return {
 		type: actionTypes.ADD_ITEM,
+		day,
 		item,
 	};
 }
 
-export function removeItem(item) {
+export function removeItem(day, item) {
 	return {
 		type: actionTypes.REMOVE_ITEM,
+		day,
 		item,
 	};
 }

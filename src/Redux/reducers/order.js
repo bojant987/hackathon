@@ -21,15 +21,19 @@ const actionHandlers = {
 		error: initialState.error,
 	}),
 
-	[actionTypes.ADD_ITEM]: (state, action) => ({
-		...state,
-		items: state.items.includes(action.item) ? state.items : [...state.items, action.item],
-		error: initialState.error,
-	}),
+	[actionTypes.ADD_ITEM]: (state, action) => {
+		const itemsForDay = state.items[action.day];
+
+		return {
+			...state,
+			items: itemsForDay.includes(action.item) ? state.items : {...state.items, [action.day]: [...itemsForDay, action.item]},
+			error: initialState.error,
+		};
+	},
 
 	[actionTypes.REMOVE_ITEM]: (state, action) => ({
 		...state,
-		items: state.items.filter(item => item != action.item),
+		items: {...state.items, [action.day]: state.items[action.day].filter(item => item != action.item)},
 		error: initialState.error,
 	}),
 
@@ -42,7 +46,7 @@ const actionHandlers = {
 	[actionTypes.SAVE_ORDER_SUCCESS]: (state, action) => ({
 		...state,
 		saving: false,
-	}),	
+	}),
 
 	[actionTypes.SAVE_ORDER_ERROR]: (state, action) => ({
 		...state,
