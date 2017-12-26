@@ -55,13 +55,33 @@ export function fetchMenu() {
 	};
 }
 
-export function switchDay(day) {}
+export function switchDay(day) {
+	return {
+		type: actionTypes.SET_CURRENT_DAY,
+		day,
+	};
+}
 
-export function setName(name) {}
+export function setName(name) {
+	return {
+		type: actionTypes.SET_NAME,
+		name,
+	};
+}
 
-export function addItem(item) {}
+export function addItem(item) {
+	return {
+		type: actionTypes.ADD_ITEM,
+		item,
+	};
+}
 
-export function removeItem(item) {}
+export function removeItem(item) {
+	return {
+		type: actionTypes.REMOVE_ITEM,
+		item,
+	};
+}
 
 export function saveOrder() {}
 
