@@ -1,0 +1,17 @@
+.DayTabs {
+  width: 90%;
+  margin: 0 auto;
+
+  .ant-tabs-nav {
+    width: 100%;
+  }
+
+  .ant-tabs-tab {
+    width: 20%;
+    text-align: center;
+  }
+}
+
+.DayTabsPane {
+  width: 20%;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { IndexRoute, withRouter, Redirect } from 'react-router';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
