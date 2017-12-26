@@ -3,10 +3,9 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 import { Input, Button } from 'antd';
 import { connect } from 'react-redux';
-import { switchDay, sendOrder } from '../../Redux/actionCreators';
 import { bindActionCreators } from 'redux';
 
-import { switchDay, fetchMenu } from '../../Redux/actionCreators';
+import { switchDay, fetchMenu, saveOrder } from '../../Redux/actionCreators';
 
 import DayTabs from './DayTabs';
 
@@ -21,20 +20,21 @@ class Order extends React.Component {
         };
     }
 
-    static defaultProps = {
-        menu: {
-            0: [],
-            1: [],
-            2: [],
-            3: [],
-            4: [],
-        }
-    };
+    // static defaultProps = {
+    //     menuByDay: {
+    //         0: [],
+    //         1: [],
+    //         2: [],
+    //         3: [],
+    //         4: [],
+    //     }
+    // };
 
     componentDidMount() {
-    	if (!this.props.menuAll && !this.props.menuLoading) {
-    		this.props.fetchMenu();
-    	}
+    	// if (!this.props.menuAll && !this.props.menuLoading) {
+    	// 	this.props.fetchMenu();
+    	// }
+        this.props.fetchMenu();
     }
 
     onTabChange = (activeKey) => {
@@ -57,13 +57,15 @@ class Order extends React.Component {
     };
 
     render() {
+
         return(
             <Layout>
                 <Content>
                     <DayTabs
                         onTabChange={this.onTabChange}
                         activeKey={this.state.activeKey}
-                        menu={this.props.menu}
+                        menu={this.props.menuByDay}
+                        menuAll={this.props.menuAll}
                         handleFoodSelection={this.handleFoodSelection}
                     />
                     <Input
@@ -71,7 +73,7 @@ class Order extends React.Component {
                         onChange={this.handleInputChange}
                         value={this.state.name}
                     />
-                    <Button>
+                    <Button onClick={this.props.saveOrder}>
                         Submit
                     </Button>
                 </Content>

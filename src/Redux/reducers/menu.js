@@ -1,8 +1,14 @@
 import actionTypes from '../constants/actionTypes';
 
 const initialState = {
-	byDay: null,
-	all: null,
+	byDay: {
+        0: [],
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+    },
+	all: [],
 	error: null,
 	loading: false,
 };
