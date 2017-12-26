@@ -86,7 +86,7 @@ class AppHeader extends React.Component {
                                 key="/options"
                                 className="Navigation__options"
                                 style={this.state.isDropdownOpen
-                                    ? { "backgroundColor": "#1890ff" }
+                                    ? { "backgroundColor": "#52b17a" }
                                     : { "backgroundColor": "transparent" }}
                             >
                                 <Icon type="caret-down" className="Navigation__optionsButtonIcon" />

@@ -39,9 +39,9 @@ export default class CardComponent extends React.Component {
 				actions={[
 					<span
                         onClick={this.handleSelection}
-                        style={ this.props.selected ? { "color": "#1890ff" } : { "color": "rgba(0, 0, 0, 0.65)" } }
+                        style={ this.props.selected ? { "color": "#52b17a" } : { "color": "rgba(0, 0, 0, 0.65)" } }
                     >
-						<Icon type="check" /> Add to order
+						<Icon type="check" /> {this.props.selected ? 'Remove from order' : 'Add to order'}
 					</span>,
 				]}
 				title={this.props.item.title}
