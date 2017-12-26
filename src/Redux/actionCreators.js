@@ -156,7 +156,7 @@ export function fetchDailySummary(day) {
 	return dispatch => {
 		dispatch(requestDaily());
 
-		axios.get(baseUrl+'order?day='+day).then(response => {
+		axios.get(baseUrl+'order/daily/'+day).then(response => {
 			dispatch(receiveDaily(day, response.data));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
