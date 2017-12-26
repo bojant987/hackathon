@@ -5,6 +5,7 @@
     ["react-hot-loader/babel"],
     ["import", {"libraryName": "antd", "style": true} ],
     ["dynamic-import-webpack"],
-    ["transform-function-bind"]
+    ["transform-function-bind"],
+    ["transform-object-rest-spread"],
   ]
 }
