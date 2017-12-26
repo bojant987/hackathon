@@ -1,8 +1,8 @@
 import actionTypes from '../constants/actionTypes';
 
 const initialState = {
-	dataByDay: null,
-	dataAll: null,
+	byDay: null,
+	all: null,
 	error: null,
 	loading: false,
 };
@@ -15,8 +15,8 @@ const actionHandlers = {
 
 	[actionTypes.RECEIVE_MENU]: (state, action) => ({
 		...state,
-		dataByDay: action.dataByDay,
-		dataAll: action.dataAll,
+		byDay: action.dataByDay,
+		all: action.dataAll,
 		loading: false,
 	}),
 
@@ -32,5 +32,5 @@ export default function(state = initialState, action) {
 		return state;
 	}
 
-	return actionHandlers[action.type];
+	return actionHandlers[action.type](state, action);
 }

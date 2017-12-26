@@ -3,7 +3,9 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 import { Input, Button } from 'antd';
 import { connect } from 'react-redux';
-import { switchDay } from '../../Redux/actionCreators';
+import { bindActionCreators } from 'redux';
+
+import { switchDay, fetchMenu } from '../../Redux/actionCreators';
 
 import DayTabs from './DayTabs';
 
@@ -26,6 +28,12 @@ class Order extends React.Component {
             4: [],
         }
     };
+
+    componentDidMount() {
+    	if (!this.props.menuAll && !this.props.menuLoading) {
+    		this.props.fetchMenu();
+    	}
+    }
 
     onTabChange = (activeKey) => {
         this.setState({activeKey});
@@ -61,16 +69,20 @@ class Order extends React.Component {
 const mapStateToProps = state => {
     return {
         day: state.day,
-        menu: state.menu,
+        menuByDay: state.menu.byDay,
+        menuAll: state.menu.all,
+        menuLoading: state.menu.loading,
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        switchDay: day => {
-            return dispatch(switchDay(day));
-        },
-    };
+	return bindActionCreators(
+		{
+			switchDay,
+			fetchMenu,
+		},
+		dispatch
+	);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Order);
