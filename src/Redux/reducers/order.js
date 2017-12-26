@@ -3,7 +3,15 @@ import actionTypes from '../constants/actionTypes';
 const initialState = {
 	name: '',
 	currentDay: 0,
-	items: {},
+	items: {
+		0: [],
+		1: [],
+		2: [],
+		3: [],
+		4: [],
+		5: [],
+		6: [],
+	},
 	loading: false,
 	saving: false,
 	error: null,
