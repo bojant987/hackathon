@@ -111,6 +111,7 @@ export function saveOrder(day, name) {
 		const foodItems = store.getState().order.items[day];
 
 		axios.post(baseUrl+'order', JSON.stringify({day, name, foodItems})).then(response => {
+			localStorage.setItem('name', name);
 			dispatch(saveOrderSuccess());
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
@@ -147,8 +148,9 @@ export function fetchDailySummary(day) {
 		dispatch(requestDaily());
 
 		axios.get(baseUrl+'order?day='+day).then(response => {
-			dispatch(receiveDaily(day, response));
+			dispatch(receiveDaily(day, response.data));
 		}).catch(error => {
+		    console.log('error', error);
 			const message = error.response || error.message || 'error';
 
 			dispatch(dailyError(day, message));
@@ -181,7 +183,7 @@ export function fetchWeeklySummary() {
 		dispatch(requestWeekly());
 
 		axios.get(baseUrl+'order').then(response => {
-			dispatch(receiveWeekly(response));
+			dispatch(receiveWeekly(response.data));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 const { Content } = Layout;
 import { Input, Button, Row, Col } from 'antd';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ class Order extends React.Component {
 
         this.state = {
             activeKey: '0',
-            name: '',
+            name: localStorage.getItem('name') || '',
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,6 +41,13 @@ class Order extends React.Component {
     }
 
     render() {
+    	if (this.props.menuLoading || this.props.orderLoading) {
+    		console.log('spinning');
+    		return <div style={{textAlign: 'center', paddingTop: '100px'}}>
+    			<Spin size="large" />
+    		</div>;
+    	}
+
         return(
             <Layout>
                 <Content>
@@ -51,8 +58,10 @@ class Order extends React.Component {
                                 onChange={this.handleInputChange}
                                 value={this.state.name}
                                 className="NameField"
+                                onPressEnter={this.handleSubmit}
+                                autoFocus
                             />
-                            <Button onClick={this.handleSubmit} className="submitOrderButton">
+                            <Button onClick={this.handleSubmit} className="submitOrderButton" loading={this.props.orderSaving} disabled={this.props.orderSaving || this.props.menuLoading || this.props.orderLoading || !this.state.name}>
                                 Submit
                             </Button>
                         </Col>
