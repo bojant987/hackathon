@@ -5,6 +5,8 @@ import {Tabs} from 'antd';
 const TabPane = Tabs.TabPane;
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Select } from 'antd';
+const Option = Select.Option;
 
 import { fetchDailySummary } from '../../Redux/actionCreators';
 
@@ -20,7 +22,7 @@ class ManageOrders extends React.Component {
     }
 
     componentDidMount() {
-        console.log(new Date().getDay());
+        // console.log(new Date().getDay() + 1);
         this.props.fetchDailySummary(new Date().getDay());
     }
 
@@ -33,6 +35,15 @@ class ManageOrders extends React.Component {
             <Layout>
                 <Content>
                     <h1 className="h-marginB--lg h-marginT--lg h-textCenter">Manage orders</h1>
+                    <div>
+                        <Select defaultValue="0" style={{ width: 300, height: 48, marginLeft: 50 }}>
+                            <Option value="0">Monday</Option>
+                            <Option value="1">Tuesday</Option>
+                            <Option value="2">Wednesday</Option>
+                            <Option value="3">Thursday</Option>
+                            <Option value="4">Friday</Option>
+                        </Select>
+                    </div>
                     <Tabs className="ManageTabs" onChange={this.onTabChange} activeKey={this.state.activeKey}>
                         <TabPane tab="Daily" key="daily" className="DailyTabsPane">
                             <Daily data={this.props.daily}/>
@@ -48,8 +59,9 @@ class ManageOrders extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state.daily);
     return {
-        daily: state.daily,
+        daily: state.daily.data,
     };
 };
 

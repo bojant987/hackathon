@@ -11,10 +11,11 @@ export default class Daily extends React.Component {
     }
 
     render() {
-        const data = this.props.data.map((item) => {
+        const data = this.props.data.length > 0 ? this.props.data.map((item) => {
             item.names = item.names.join(', ');
+            item.key = item.food_name;
             return item;
-        });
+        }) : [];
         const columns = [{
             title: 'Food',
             dataIndex: 'food_name',
@@ -31,7 +32,7 @@ export default class Daily extends React.Component {
 
         return(
             <div>
-                <Table columns={columns} dataSource={data} />
+                <Table columns={columns} dataSource={data} pagination={false} />
             </div>
         );
     }
