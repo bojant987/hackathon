@@ -13,11 +13,11 @@ export default class DayTabs extends React.Component {
         return (
             <Tabs className="DayTabs" onChange={this.props.onTabChange} activeKey={this.props.activeKey}>
                 <TabPane tab="Mon" key="0" className="DayTabsPane">
-                    <Row>
+                    <Row type="flex" justify="space-around" align="middle">
                         {this.props.menu['0'].map((id) => {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
-                                <Col span={8} key={foodItem.id}>
+                                <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 8 }} key={foodItem.id}>
                                     <Card
                                         item={foodItem}
                                         day={0}
@@ -30,11 +30,11 @@ export default class DayTabs extends React.Component {
                     </Row>
                 </TabPane>
                 <TabPane tab="Tue" key="1">
-                    <Row>
+                    <Row type="flex" justify="space-around" align="middle">
                         {this.props.menu['1'].map((id) => {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
-                                <Col span={8} key={foodItem.id}>
+                                <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 8 }} key={foodItem.id}>
                                     <Card
                                         item={foodItem}
                                         day={1}
@@ -47,11 +47,11 @@ export default class DayTabs extends React.Component {
                     </Row>
                 </TabPane>
                 <TabPane tab="Wed" key="2">
-                    <Row>
+                    <Row type="flex" justify="space-around" align="middle">
                         {this.props.menu['2'].map((id) => {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
-                                <Col span={8} key={foodItem.id}>
+                                <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 8 }} key={foodItem.id}>
                                     <Card
                                         item={foodItem}
                                         day={2}
@@ -64,11 +64,11 @@ export default class DayTabs extends React.Component {
                     </Row>
                 </TabPane>
                 <TabPane tab="Thu" key="3">
-                    <Row>
+                    <Row type="flex" justify="space-around" align="middle">
                         {this.props.menu['3'].map((id) => {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
-                                <Col span={8} key={foodItem.id}>
+                                <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 8 }} key={foodItem.id}>
                                     <Card
                                         item={foodItem}
                                         day={3}
@@ -81,11 +81,11 @@ export default class DayTabs extends React.Component {
                     </Row>
                 </TabPane>
                 <TabPane tab="Fri" key="4">
-                    <Row>
+                    <Row type="flex" justify="space-around" align="middle">
                         {this.props.menu['4'].map((id) => {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
-                                <Col span={8} key={foodItem.id}>
+                                <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 8 }} key={foodItem.id}>
                                     <Card
                                         item={foodItem}
                                         day={4}
