@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'antd';
 import { Select } from 'antd';
 const Option = Select.Option;
+import uniq from 'lodash.uniq';
 
 export default class Daily extends React.Component {
     constructor(props) {
@@ -15,6 +16,9 @@ export default class Daily extends React.Component {
     render() {
         // console.log(this.props.data);
         const data = this.props.data && this.props.data.length > 0 ? this.props.data.map((item) => {
+           if (typeof item.names !== 'string') {
+               item.names = uniq(item.names);
+           }
             if (item.names && item.names.length > 0 && typeof item.names !== 'string') {
                 item.names = item.names.join(', ');
             }
