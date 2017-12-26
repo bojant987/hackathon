@@ -83,8 +83,40 @@ export function removeItem(item) {
 	};
 }
 
-export function saveOrder() {}
+function saveOrderStart() {
+	return {
+		type: actionTypes.SAVE_ORDER,
+	};
+}
 
-export function fetchSummary() {}
+function saveOrderSuccess() {
+	return {
+		type: actionTypes.SAVE_ORDER_SUCCESS,
+	};
+}
+
+function saveOrderError() {
+	return {
+		type: actionTypes.SAVE_ORDER_ERROR,
+	};
+}
+
+export function saveOrder() {
+	return dispatch => {
+		dispatch(saveOrderStart());
+
+		axios.post(baseUrl+'order', JSON.stringify({})).then(response => {
+			dispatch(saveOrderSuccess());
+		}).catch(error => {
+			const message = error.response || error.message || 'error';
+
+			dispatch(saveOrderError(message));
+		});
+	};
+}
+
+export function fetchDailySummary() {}
+
+export function fetchWeeklySummary() {}
 
 export function fetchOrder(day) {}

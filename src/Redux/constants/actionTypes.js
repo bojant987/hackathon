@@ -14,7 +14,11 @@ export default keyMirror({
 	SAVE_ORDER_SUCCESS: null,
 	SAVE_ORDER_ERROR: null,
 
-	REQUEST_SUMMARY: null,
-	RECEIVE_SUMMARY: null,
-	SUMMARY_ERROR: null,
+	REQUEST_DAILY: null,
+	RECEIVE_DAILY: null,
+	DAILY_ERROR: null,
+
+	REQUEST_WEEKLY: null,
+	RECEIVE_WEEKLY: null,
+	WEEKLY_ERROR: null,
 });
