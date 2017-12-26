@@ -79,8 +79,8 @@ class Order extends React.Component {
                         activeKey={this.state.activeKey}
                         menu={this.props.menuByDay}
                         menuAll={this.props.menuAll}
-                        addFood={this.addItem}
-                        removeFood={this.removeItem}
+                        addFood={this.props.addItem}
+                        removeFood={this.props.removeItem}
                     />
                 </Content>
             </Layout>

@@ -103,11 +103,11 @@ function saveOrderError() {
 	};
 }
 
-export function saveOrder(day) {
+export function saveOrder(day, name) {
 	return dispatch => {
 		dispatch(saveOrderStart());
 
-		axios.post(baseUrl+'order', JSON.stringify({day})).then(response => {
+		axios.post(baseUrl+'order', JSON.stringify({day, name})).then(response => {
 			dispatch(saveOrderSuccess());
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
