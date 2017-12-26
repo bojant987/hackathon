@@ -68,7 +68,7 @@ class AppHeader extends React.Component {
                             </Menu.Item>
                             <Menu.Item key="/food" className="Navigation__item">
                                 <Link to="/food">
-                                    <Icon type="smile-o" />Hall Of Fame
+                                    <Icon type="smile-o" />Feeling lucky
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="/profile" className="Navigation__item">
