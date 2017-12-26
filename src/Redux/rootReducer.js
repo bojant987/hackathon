@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import someReducer from './reducers/someReducer';
+import menu from './reducers/menu';
+import order from './reducers/order';
 
 export default combineReducers({
-    someReducer
+    menu,
+    order,
 });

@@ -27,6 +27,7 @@
     "babel-plugin-import": "^1.6.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-function-bind": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx-source": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -56,6 +57,7 @@
   },
   "dependencies": {
     "antd": "^3.0.3",
+    "axios": "^0.17.1",
     "express": "^4.16.2",
     "keymirror": "^0.1.1",
     "prop-types": "^15.6.0",

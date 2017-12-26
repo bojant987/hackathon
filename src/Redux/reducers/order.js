@@ -22,7 +22,7 @@ const actionHandlers = {
 
 	[actionTypes.ADD_ITEM]: (state, action) => ({
 		...state,
-		items: state.items.includes(action.item) ? state.items : {...state.items, action.item},
+		items: state.items.includes(action.item) ? state.items : [...state.items, action.item],
 		error: initialState.error,
 	}),
 
