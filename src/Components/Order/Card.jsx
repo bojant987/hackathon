@@ -22,7 +22,7 @@ export default class CardComponent extends React.Component {
 	render() {
 		return (
 			<Card
-				className="ant-card-overwrite"
+				className={this.props.selected ? 'ant-card-overwrite ant-card-overwrite--checked' : 'ant-card-overwrite'}
 				cover={<img alt={this.props.item.title} src={this.props.item.photo_uri} />}
 				actions={[
 					<span
