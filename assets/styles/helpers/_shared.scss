@@ -40,3 +40,17 @@
 .ant-select-dropdown-menu-item:hover {
     background-color: $greenLight;
 }
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus,
+.ant-btn-primary {
+    background-color: $green;
+    border-color: $green;
+}
+.ant-spin {
+    color: $green;
+}
+
+.ant-spin-dot i {
+    background-color: $green;
+}
