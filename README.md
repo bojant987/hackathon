@@ -23,3 +23,8 @@ To run project in prod env with express server and minification of resources, ru
 ```sh
 npm start
 ```
+
+## API - Mock
+
+API docs: http://private-fe4061-hackathon19.apiary-mock.com
+Example, weekly menu: http://private-fe4061-hackathon19.apiary-mock.com/menu
