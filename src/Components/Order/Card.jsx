@@ -28,7 +28,7 @@ export default class CardComponent extends React.Component {
 				className="ant-card-overwrite"
 				cover={<img alt={this.state.item.title} src={this.state.item.img} />}
 				actions={[
-					<span className="h-fullWide" onClick={this.addToOrder}>
+					<span className="h-fullWide" onClick={this.props.handleFoodSelection.bind(null, this.props.day, this.props.item.id)}>
 						<Icon type="check" /> Add to order
 					</span>,
 				]}

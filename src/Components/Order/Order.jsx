@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 import { Input, Button } from 'antd';
 import { connect } from 'react-redux';
-import { switchDay } from '../../Redux/actionCreators';
+import { switchDay, sendOrder } from '../../Redux/actionCreators';
 
 import DayTabs from './DayTabs';
 
@@ -14,6 +14,7 @@ class Order extends React.Component {
         this.state = {
             activeKey: '0',
             name: '',
+            selectedFood: {},
         };
     }
 
@@ -37,6 +38,14 @@ class Order extends React.Component {
         this.setState({ name: event.target.value });
     };
 
+    handleFoodSelection = (day, foodId) => {
+        this.setState({
+            selectedFood: {
+                ...this.state.selectedFood,
+                [day]: [ ...this.state.selectedFood[day], foodId ]
+            }
+        });
+    };
 
     render() {
         return(
@@ -46,12 +55,16 @@ class Order extends React.Component {
                         onTabChange={this.onTabChange}
                         activeKey={this.state.activeKey}
                         menu={this.props.menu}
+                        handleFoodSelection={this.handleFoodSelection}
                     />
                     <Input
                         placeholder="Your name"
                         onChange={this.handleInputChange}
                         value={this.state.name}
                     />
+                    <Button>
+                        Submit
+                    </Button>
                 </Content>
             </Layout>
         );
@@ -69,6 +82,9 @@ const mapDispatchToProps = dispatch => {
     return {
         switchDay: day => {
             return dispatch(switchDay(day));
+        },
+        sendOrder: params => {
+            return dispatch(switchDay(params));
         },
     };
 };

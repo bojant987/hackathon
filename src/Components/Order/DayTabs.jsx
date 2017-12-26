@@ -17,7 +17,7 @@ export default class DayTabs extends React.Component {
                         {this.props.menu['0'].map((item) => {
                             return (
                                 <Col span={8}>
-                                    <Card item={item} />
+                                    <Card item={item} day={0} handleFoodSelection={this.props.handleFoodSelection} />
                                 </Col>
                             );
                         })}
@@ -28,7 +28,7 @@ export default class DayTabs extends React.Component {
                         {this.props.menu['1'].map((item) => {
                             return (
                                 <Col span={8}>
-                                    <Card item={item} />
+                                    <Card item={item} day={1} handleFoodSelection={this.props.handleFoodSelection} />
                                 </Col>
                             );
                         })}
@@ -39,7 +39,7 @@ export default class DayTabs extends React.Component {
                         {this.props.menu['2'].map((item) => {
                             return (
                                 <Col span={8}>
-                                    <Card item={item} />
+                                    <Card item={item} day={2} handleFoodSelection={this.props.handleFoodSelection} />
                                 </Col>
                             );
                         })}
@@ -50,7 +50,7 @@ export default class DayTabs extends React.Component {
                         {this.props.menu['3'].map((item) => {
                             return (
                                 <Col span={8}>
-                                    <Card item={item} />
+                                    <Card item={item} day={3} handleFoodSelection={this.props.handleFoodSelection} />
                                 </Col>
                             );
                         })}
@@ -61,7 +61,7 @@ export default class DayTabs extends React.Component {
                         {this.props.menu['4'].map((item) => {
                             return (
                                 <Col span={6}>
-                                    <Card item={item} />
+                                    <Card item={item} day={4} handleFoodSelection={this.props.handleFoodSelection} />
                                 </Col>
                             );
                         })}
