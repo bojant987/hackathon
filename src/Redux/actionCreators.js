@@ -146,7 +146,7 @@ export function fetchDailySummary(day) {
 	return dispatch => {
 		dispatch(requestDaily());
 
-		axios.get(baseUrl+'daily?day='+day).then(response => {
+		axios.get(baseUrl+'order?day='+day).then(response => {
 			dispatch(receiveDaily(day, response));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
@@ -180,7 +180,7 @@ export function fetchWeeklySummary() {
 	return dispatch => {
 		dispatch(requestWeekly());
 
-		axios.get(baseUrl+'weekly').then(response => {
+		axios.get(baseUrl+'order').then(response => {
 			dispatch(receiveWeekly(response));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
@@ -214,7 +214,7 @@ export function fetchOrders() {
 	return dispatch => {
 		dispatch(requestOrder());
 
-		axios.get(baseUrl+'order').then(response => {
+		axios.get(baseUrl+'something').then(response => {
 			dispatch(receiveOrder(response));
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
