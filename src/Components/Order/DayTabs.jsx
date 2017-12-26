@@ -21,8 +21,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={0}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[0].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;
@@ -38,8 +39,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={1}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[1].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;
@@ -55,8 +57,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={2}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[2].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;
@@ -72,8 +75,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={3}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[3].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;
@@ -89,8 +93,9 @@ export default class DayTabs extends React.Component {
                                     <Card
                                         item={foodItem}
                                         day={4}
-                                        addFood={this.props.addFood}
-                                        removeFood={this.props.removeFood}
+                                        onSelect={this.props.addFood}
+                                        onRemove={this.props.removeFood}
+                                        selected={this.props.selectedItems[4].includes(foodItem.id)}
                                     />
                                 </Col>
                             ) : null;

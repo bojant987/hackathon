@@ -1,7 +1,7 @@
 import actionTypes from '../constants/actionTypes';
 
 const initialState = {
-	data: null,
+	data: [],
 	loading: false,
 	error: null,
 };
