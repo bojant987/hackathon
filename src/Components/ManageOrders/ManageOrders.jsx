@@ -5,12 +5,11 @@ import {Tabs} from 'antd';
 const TabPane = Tabs.TabPane;
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Select } from 'antd';
-const Option = Select.Option;
 
-import { fetchDailySummary } from '../../Redux/actionCreators';
+import { fetchDailySummary, fetchWeeklySummary } from '../../Redux/actionCreators';
 
 import Daily from './Daily';
+import Weekly from './Weekly';
 
 class ManageOrders extends React.Component {
     constructor(props) {
@@ -24,6 +23,7 @@ class ManageOrders extends React.Component {
 
     componentDidMount() {
         this.props.fetchDailySummary(this.state.selectedDay);
+        this.props.fetchWeeklySummary();
     }
 
     componentDidUpdate(nextProps, nextState) {
@@ -45,26 +45,12 @@ class ManageOrders extends React.Component {
             <Layout>
                 <Content>
                     <h1 className="h-marginB--lg h-marginT--lg h-textCenter">Manage orders</h1>
-                    <div>
-                        <Select
-                            defaultValue="0"
-                            style={{ width: 300, height: 48, marginLeft: 50 }}
-                            onChange={this.handleSelectDay}
-                            value={this.state.selectedDay}
-                        >
-                            <Option value="0">Monday</Option>
-                            <Option value="1">Tuesday</Option>
-                            <Option value="2">Wednesday</Option>
-                            <Option value="3">Thursday</Option>
-                            <Option value="4">Friday</Option>
-                        </Select>
-                    </div>
                     <Tabs className="ManageTabs" onChange={this.onTabChange} activeKey={this.state.activeKey}>
                         <TabPane tab="Daily" key="daily" className="DailyTabsPane">
-                            <Daily data={this.props.daily} loading={this.props.loading} />
+                            <Daily data={this.props.daily} loading={this.props.loading} handleSelectDay={this.handleSelectDay} selectedDay={this.state.selectedDay} />
                         </TabPane>
                         <TabPane tab="Weekly" key="weekly" className="WeeklyTabsPane">
-
+                            <Weekly data={this.props.weekly} loading={this.props.loading} />
                         </TabPane>
                     </Tabs>
                 </Content>
@@ -76,6 +62,7 @@ class ManageOrders extends React.Component {
 const mapStateToProps = state => {
     return {
         daily: state.daily.data,
+        weekly: state.weekly.data,
         loading: state.daily.loading || state.weekly.loading,
     };
 };
@@ -84,6 +71,7 @@ const mapDispatchToProps = dispatch => {
     return bindActionCreators(
         {
             fetchDailySummary,
+            fetchWeeklySummary
         },
         dispatch
     );
