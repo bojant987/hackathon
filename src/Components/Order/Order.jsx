@@ -35,11 +35,23 @@ class Order extends React.Component {
         this.setState({ name: event.target.value });
     };
 
-    handleFoodSelection = (day, foodId) => {
-        // console.log('W', this.state.selectedFood[day]);
+    addFood = (day, foodId) => {
         const newSelection = {
         ...this.state.selectedFood,
-                [day]: this.state.selectedFood[day] ? uniq([...this.state.selectedFood[day], foodId]) : [foodId]
+                [day]: this.state.selectedFood[day] ? [...this.state.selectedFood[day], foodId] : [foodId]
+        };
+
+        this.setState({
+            selectedFood: newSelection,
+        });
+    };
+
+    removeFood = (day, foodId) => {
+        const newSelection = {
+            ...this.state.selectedFood,
+            [day]: this.state.selectedFood[day].filter((id) => {
+                 return id !== foodId;
+            })
         };
 
         this.setState({
@@ -48,7 +60,7 @@ class Order extends React.Component {
     };
 
     render() {
-        console.log('selected', this.state.selectedFood);
+        console.log(this.state.selectedFood);
         return(
             <Layout>
                 <Content>
@@ -68,7 +80,8 @@ class Order extends React.Component {
                         activeKey={this.state.activeKey}
                         menu={this.props.menuByDay}
                         menuAll={this.props.menuAll}
-                        handleFoodSelection={this.handleFoodSelection}
+                        addFood={this.addFood}
+                        removeFood={this.removeFood}
                     />
                 </Content>
             </Layout>

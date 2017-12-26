@@ -12,8 +12,13 @@ export default class CardComponent extends React.Component {
 	}
 
 	handleSelection = () => {
+	    if (this.state.itemSelected) {
+	        this.props.removeFood(this.props.day, this.props.item.id);
+        } else {
+            this.props.addFood(this.props.day, this.props.item.id);
+        }
+
 	    this.setState({ itemSelected: !this.state.itemSelected });
-        this.props.handleFoodSelection(this.props.day, this.props.item.id)
     };
 
 	render() {

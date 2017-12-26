@@ -18,7 +18,12 @@ export default class DayTabs extends React.Component {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
                                 <Col span={8} key={foodItem.id}>
-                                    <Card item={foodItem} day={0} handleFoodSelection={this.props.handleFoodSelection} />
+                                    <Card
+                                        item={foodItem}
+                                        day={0}
+                                        addFood={this.props.addFood}
+                                        removeFood={this.props.removeFood}
+                                    />
                                 </Col>
                             ) : null;
                         })}
@@ -30,7 +35,12 @@ export default class DayTabs extends React.Component {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
                                 <Col span={8} key={foodItem.id}>
-                                    <Card item={foodItem} day={1} handleFoodSelection={this.props.handleFoodSelection} />
+                                    <Card
+                                        item={foodItem}
+                                        day={1}
+                                        addFood={this.props.addFood}
+                                        removeFood={this.props.removeFood}
+                                    />
                                 </Col>
                             ) : null;
                         })}
@@ -42,7 +52,12 @@ export default class DayTabs extends React.Component {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
                                 <Col span={8} key={foodItem.id}>
-                                    <Card item={foodItem} day={2} handleFoodSelection={this.props.handleFoodSelection} />
+                                    <Card
+                                        item={foodItem}
+                                        day={2}
+                                        addFood={this.props.addFood}
+                                        removeFood={this.props.removeFood}
+                                    />
                                 </Col>
                             ) : null;
                         })}
@@ -54,7 +69,12 @@ export default class DayTabs extends React.Component {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
                                 <Col span={8} key={foodItem.id}>
-                                    <Card item={foodItem} day={3} handleFoodSelection={this.props.handleFoodSelection} />
+                                    <Card
+                                        item={foodItem}
+                                        day={3}
+                                        addFood={this.props.addFood}
+                                        removeFood={this.props.removeFood}
+                                    />
                                 </Col>
                             ) : null;
                         })}
@@ -66,7 +86,12 @@ export default class DayTabs extends React.Component {
                             const foodItem = this.props.menuAll[id];
                             return foodItem ? (
                                 <Col span={8} key={foodItem.id}>
-                                    <Card item={foodItem} day={4} handleFoodSelection={this.props.handleFoodSelection} />
+                                    <Card
+                                        item={foodItem}
+                                        day={4}
+                                        addFood={this.props.addFood}
+                                        removeFood={this.props.removeFood}
+                                    />
                                 </Col>
                             ) : null;
                         })}
