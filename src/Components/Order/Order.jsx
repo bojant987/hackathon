@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Spin } from 'antd';
+import { Layout, Spin, notification } from 'antd';
 const { Content } = Layout;
 import { Input, Button, Row, Col } from 'antd';
 import { connect } from 'react-redux';
@@ -26,6 +26,22 @@ class Order extends React.Component {
 
         if (false && this.state.name) {
         	this.props.fetchOrders(this.state.name);
+    	}
+    }
+
+    componentDidUpdate(prevProps) {
+    	if (prevProps.orderSaving && !this.props.orderSaving) {
+    		if (this.props.orderError) {
+    			notification.error({
+    				message: 'Ooops, there was a problem',
+    				description: 'We could not save your order. Please try again.',
+    			});
+    		} else {
+    			notification.success({
+    				message: 'Order saved',
+    				description: 'Success! Enjoy your meal. Feel free to alter your order if you change your mind.',
+    			});
+    		}
     	}
     }
 
@@ -93,6 +109,7 @@ const mapStateToProps = state => {
         order: state.order.items,
         orderLoading: state.order.loading,
         orderSaving: state.order.saving,
+        orderError: state.order.error,
     };
 };
 
