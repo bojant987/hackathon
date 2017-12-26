@@ -59,6 +59,7 @@ class Order extends React.Component {
                                 value={this.state.name}
                                 className="NameField"
                                 onPressEnter={this.handleSubmit}
+                                autoFocus
                             />
                             <Button onClick={this.handleSubmit} className="submitOrderButton" loading={this.props.orderSaving} disabled={this.props.orderSaving || this.props.menuLoading || this.props.orderLoading || !this.state.name}>
                                 Submit
