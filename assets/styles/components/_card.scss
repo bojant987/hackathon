@@ -1,5 +1,18 @@
 .ant-card-overwrite {
-	width: 300px;
+	margin: auto auto 35px auto;
+	max-width: 90%;
+	@media (min-width: 1600px) {
+		max-width: 60%;
+	}
+
+	.ant-card-cover {
+		display: flex;
+		max-height: 200px;
+
+		img {
+			border: 1px solid #e8e8e8;
+		}
+	}
 
 	.ant-card-actions {
 		li span {
