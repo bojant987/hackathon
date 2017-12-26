@@ -13,7 +13,7 @@ function receiveMenu(data) {
 	const dataAll = {};
 	const dataByDay = {};
 
-	for (int i = 0; i <= 6; i++) {
+	for (let i = 0; i <= 6; i++) {
 		dataByDay[i] = [];
 
 		data[i].forEach(item => {
