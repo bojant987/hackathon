@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 const { Content } = Layout;
-import { Input, Button } from 'antd';
+import { Input, Button, Row, Col } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import uniq from 'lodash.uniq';
@@ -64,17 +64,21 @@ class Order extends React.Component {
         return(
             <Layout>
                 <Content>
-                    <div className="NameFieldWrapper">
-                        <Input
-                            placeholder="Your name"
-                            onChange={this.handleInputChange}
-                            value={this.state.name}
-                            className="NameField"
-                        />
-                        <Button onClick={this.props.saveOrder} className="submitOrderButton">
-                            Submit
-                        </Button>
-                    </div>
+
+                    <Row className="h-layoutWidth90" type="flex" justify="end" align="middle">
+                        <Col span="24" className="NameFieldWrapper">
+                            <Input
+                                placeholder="Your name"
+                                onChange={this.handleInputChange}
+                                value={this.state.name}
+                                className="NameField"
+                            />
+                            <Button onClick={this.props.saveOrder} className="submitOrderButton">
+                                Submit
+                            </Button>
+                        </Col>
+                    </Row>
+
                     <DayTabs
                         onTabChange={this.onTabChange}
                         activeKey={this.state.activeKey}

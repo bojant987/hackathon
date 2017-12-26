@@ -11,7 +11,7 @@ export default class DayTabs extends React.Component {
 
     render() {
         return (
-            <Tabs className="DayTabs" onChange={this.props.onTabChange} activeKey={this.props.activeKey}>
+            <Tabs className="DayTabs h-layoutWidth90" onChange={this.props.onTabChange} activeKey={this.props.activeKey}>
                 <TabPane tab="Mon" key="0" className="DayTabsPane">
                     <Row type="flex" justify="space-around" align="middle">
                         {this.props.menu['0'].map((id) => {
