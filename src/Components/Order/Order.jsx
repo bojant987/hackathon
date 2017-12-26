@@ -4,6 +4,7 @@ const { Content } = Layout;
 import { Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import uniq from 'lodash.uniq';
 
 import { switchDay, fetchMenu, saveOrder } from '../../Redux/actionCreators';
 
@@ -20,20 +21,7 @@ class Order extends React.Component {
         };
     }
 
-    // static defaultProps = {
-    //     menuByDay: {
-    //         0: [],
-    //         1: [],
-    //         2: [],
-    //         3: [],
-    //         4: [],
-    //     }
-    // };
-
     componentDidMount() {
-    	// if (!this.props.menuAll && !this.props.menuLoading) {
-    	// 	this.props.fetchMenu();
-    	// }
         this.props.fetchMenu();
     }
 
@@ -48,19 +36,33 @@ class Order extends React.Component {
     };
 
     handleFoodSelection = (day, foodId) => {
+        // console.log('W', this.state.selectedFood[day]);
+        const newSelection = {
+        ...this.state.selectedFood,
+                [day]: this.state.selectedFood[day] ? uniq([...this.state.selectedFood[day], foodId]) : [foodId]
+        };
+
         this.setState({
-            selectedFood: {
-                ...this.state.selectedFood,
-                [day]: [ ...this.state.selectedFood[day], foodId ]
-            }
+            selectedFood: newSelection,
         });
     };
 
     render() {
-
+        console.log('selected', this.state.selectedFood);
         return(
             <Layout>
                 <Content>
+                    <div className="NameFieldWrapper">
+                        <Input
+                            placeholder="Your name"
+                            onChange={this.handleInputChange}
+                            value={this.state.name}
+                            className="NameField"
+                        />
+                        <Button onClick={this.props.saveOrder} className="submitOrderButton">
+                            Submit
+                        </Button>
+                    </div>
                     <DayTabs
                         onTabChange={this.onTabChange}
                         activeKey={this.state.activeKey}
@@ -68,14 +70,6 @@ class Order extends React.Component {
                         menuAll={this.props.menuAll}
                         handleFoodSelection={this.handleFoodSelection}
                     />
-                    <Input
-                        placeholder="Your name"
-                        onChange={this.handleInputChange}
-                        value={this.state.name}
-                    />
-                    <Button onClick={this.props.saveOrder}>
-                        Submit
-                    </Button>
                 </Content>
             </Layout>
         );

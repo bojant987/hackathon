@@ -55,16 +55,166 @@ export function fetchMenu() {
 	};
 }
 
-export function switchDay(day) {}
+export function switchDay(day) {
+	return {
+		type: actionTypes.SET_CURRENT_DAY,
+		day,
+	};
+}
 
-export function setName(name) {}
+export function setName(name) {
+	return {
+		type: actionTypes.SET_NAME,
+		name,
+	};
+}
 
-export function addItem(item) {}
+export function addItem(item) {
+	return {
+		type: actionTypes.ADD_ITEM,
+		item,
+	};
+}
 
-export function removeItem(item) {}
+export function removeItem(item) {
+	return {
+		type: actionTypes.REMOVE_ITEM,
+		item,
+	};
+}
 
-export function saveOrder() {}
+function saveOrderStart() {
+	return {
+		type: actionTypes.SAVE_ORDER,
+	};
+}
 
-export function fetchSummary() {}
+function saveOrderSuccess() {
+	return {
+		type: actionTypes.SAVE_ORDER_SUCCESS,
+	};
+}
 
-export function fetchOrder(day) {}
+function saveOrderError() {
+	return {
+		type: actionTypes.SAVE_ORDER_ERROR,
+	};
+}
+
+export function saveOrder(day) {
+	return dispatch => {
+		dispatch(saveOrderStart());
+
+		axios.post(baseUrl+'order', JSON.stringify({day})).then(response => {
+			dispatch(saveOrderSuccess());
+		}).catch(error => {
+			const message = error.response || error.message || 'error';
+
+			dispatch(saveOrderError(message));
+		});
+	};
+}
+
+function requestDaily() {
+	return {
+		type: actionTypes.REQUEST_DAILY,
+	};
+}
+
+function receiveDaily(day, data) {
+	return {
+		type: actionTypes.RECEIVE_DAILY,
+		day,
+		payload: data,
+	};
+}
+
+function dailyError(day, error) {
+	return {
+		type: actionTypes.DAILY_ERROR,
+		day,
+		payload: error,
+	};
+}
+
+export function fetchDailySummary(day) {
+	return dispatch => {
+		dispatch(requestDaily());
+
+		axios.get(baseUrl+'daily?day='+day).then(response => {
+			dispatch(receiveDaily(day, response));
+		}).catch(error => {
+			const message = error.response || error.message || 'error';
+
+			dispatch(dailyError(day, message));
+		});
+	};
+}
+
+function requestWeekly() {
+	return {
+		type: actionTypes.REQUEST_WEEKLY,
+	};
+}
+
+function receiveWeekly(data) {
+	return {
+		type: actionTypes.RECEIVE_WEEKLY,
+		payload: data,
+	};
+}
+
+function weeklyError(error) {
+	return {
+		type: actionTypes.DAILY_ERROR,
+		payload: error,
+	};
+}
+
+export function fetchWeeklySummary() {
+	return dispatch => {
+		dispatch(requestWeekly());
+
+		axios.get(baseUrl+'weekly').then(response => {
+			dispatch(receiveWeekly(response));
+		}).catch(error => {
+			const message = error.response || error.message || 'error';
+
+			dispatch(weeklyError(message));
+		});
+	};
+}
+
+function requestOrders() {
+	return {
+		type: actionTypes.REQUEST_ORDER,
+	};
+}
+
+function receiveOrder(data) {
+	return {
+		type: actionTypes.RECEIVE_ORDER,
+		payload: data,
+	};
+}
+
+function orderError(error) {
+	return {
+		type: actionTypes.ORDER_ERROR,
+		payload: error,
+	};
+}
+
+export function fetchOrders() {
+	return dispatch => {
+		dispatch(requestOrder());
+
+		axios.get(baseUrl+'order').then(response => {
+			dispatch(receiveOrder(response));
+		}).catch(error => {
+			const message = error.response || error.message || 'error';
+
+			dispatch(orderError(message));
+		});
+	};
+}

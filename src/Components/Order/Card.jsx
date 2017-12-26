@@ -5,16 +5,28 @@ const { Meta } = Card;
 export default class CardComponent extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+		    itemSelected: false,
+        };
 	}
 
+	handleSelection = () => {
+	    this.setState({ itemSelected: !this.state.itemSelected });
+        this.props.handleFoodSelection(this.props.day, this.props.item.id)
+    };
+
 	render() {
-	    console.log(this.props.item);
 		return (
 			<Card
 				className="ant-card-overwrite"
 				cover={<img alt={this.props.item.title} src={this.props.item.photo_uri} />}
 				actions={[
-					<span className="h-fullWide" onClick={this.props.handleFoodSelection.bind(null, this.props.day, this.props.item.id)}>
+					<span
+                        className="h-fullWide"
+                        onClick={this.handleSelection}
+                        style={ this.state.itemSelected ? { "color": "#1890ff" } : { "color": "rgba(0, 0, 0, 0.65)" } }
+                    >
 						<Icon type="check" /> Add to order
 					</span>,
 				]}
