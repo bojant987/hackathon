@@ -7,22 +7,22 @@ const initialState = {
 };
 
 const actionHandlers = {
-	[actionTypes.REQUEST_MENU]: (state, action) => {
+	[actionTypes.REQUEST_MENU]: (state, action) => ({
 		...initialState,
 		loading: true,
-	},
+	}),
 
-	[actionTypes.RECEIVE_MENU]: (state, action) => {
+	[actionTypes.RECEIVE_MENU]: (state, action) => ({
 		...state,
 		data: action.payload,
 		loading: false,
-	},
+	}),
 
-	[actionTypes.MENU_ERROR]: (state, action) => {
+	[actionTypes.MENU_ERROR]: (state, action) => ({
 		...state,
 		error: action.payload,
 		loading: false,
-	},
+	}),
 };
 
 export default function(state = initialState, action) {
