@@ -16,8 +16,9 @@ class Order extends React.Component {
         this.state = {
             activeKey: '0',
             name: '',
-            selectedFood: {},
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -26,7 +27,6 @@ class Order extends React.Component {
 
     onTabChange = (activeKey) => {
         this.setState({activeKey});
-        // this.props.switchDay(activeKey);
     };
 
 
@@ -34,32 +34,13 @@ class Order extends React.Component {
         this.setState({ name: event.target.value });
     };
 
-    // addFood = (day, foodId) => {
-    //     const newSelection = {
-    //     ...this.state.selectedFood,
-    //             [day]: this.state.selectedFood[day] ? [...this.state.selectedFood[day], foodId] : [foodId]
-    //     };
-    //
-    //     this.setState({
-    //         selectedFood: newSelection,
-    //     });
-    // };
-    //
-    // removeFood = (day, foodId) => {
-    //     const newSelection = {
-    //         ...this.state.selectedFood,
-    //         [day]: this.state.selectedFood[day].filter((id) => {
-    //              return id !== foodId;
-    //         })
-    //     };
-    //
-    //     this.setState({
-    //         selectedFood: newSelection,
-    //     });
-    // };
+    handleSubmit() {
+    	if (this.state.activeKey && this.state.name) {
+    		this.props.saveOrder(this.state.activeKey, this.state.name);
+    	}
+    }
 
     render() {
-        console.log(this.state.selectedFood);
         return(
             <Layout>
                 <Content>
@@ -70,7 +51,7 @@ class Order extends React.Component {
                             value={this.state.name}
                             className="NameField"
                         />
-                        <Button onClick={this.props.saveOrder} className="submitOrderButton">
+                        <Button onClick={this.handleSubmit} className="submitOrderButton">
                             Submit
                         </Button>
                     </div>
@@ -90,10 +71,12 @@ class Order extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        day: state.day,
         menuByDay: state.menu.byDay,
         menuAll: state.menu.all,
         menuLoading: state.menu.loading,
+        order: state.order.items,
+        orderLoading: state.order.loading,
+        orderSaving: state.order.saving,
     };
 };
 
@@ -104,6 +87,7 @@ const mapDispatchToProps = dispatch => {
 			fetchMenu,
             addItem,
             removeItem,
+            saveOrder,
 		},
 		dispatch
 	);

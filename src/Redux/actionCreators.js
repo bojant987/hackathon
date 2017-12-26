@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import baseUrl from './constants/baseUrl';
 import actionTypes from './constants/actionTypes';
+import store from './store';
 
 function requestMenu() {
 	return {
@@ -107,7 +108,9 @@ export function saveOrder(day, name) {
 	return dispatch => {
 		dispatch(saveOrderStart());
 
-		axios.post(baseUrl+'order', JSON.stringify({day, name})).then(response => {
+		const foodItems = store.getState().order.items[day];
+
+		axios.post(baseUrl+'order', JSON.stringify({day, name, foodItems})).then(response => {
 			dispatch(saveOrderSuccess());
 		}).catch(error => {
 			const message = error.response || error.message || 'error';
