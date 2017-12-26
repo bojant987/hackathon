@@ -16,11 +16,13 @@ function receiveMenu(data) {
 	for (let i = 0; i <= 6; i++) {
 		dataByDay[i] = [];
 
-		data[i].forEach(item => {
-			dataAll[item.id] = item;
+		if (data[i]) {
+			data[i].forEach(item => {
+				dataAll[item.id] = item;
 
-			dataByDay[i].push(item.id);
-		});
+				dataByDay[i].push(item.id);
+			});
+		}
 	}
 
 	return {
@@ -42,8 +44,10 @@ export function fetchMenu() {
 		dispatch(requestMenu());
 
 		axios.get(baseUrl+'menu').then(response => {
+			console.log('response:', response);
 			dispatch(receiveMenu(response.data));
 		}).catch(error => {
+			console.log('error:', error);
 			const message = error.response || error.message || 'error';
 
 			dispatch(menuError(message));
