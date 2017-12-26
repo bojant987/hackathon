@@ -1,39 +1,17 @@
 import React from 'react';
 import {Tabs, Button, Row, Col} from 'antd';
-import { connect } from 'react-redux';
 import Card from './Card';
 
 const TabPane = Tabs.TabPane;
 
-import { switchDay } from '../../Redux/actionCreators';
-
-class DayTabs extends React.Component {
+export default class DayTabs extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            activeKey: '0',
-        };
     }
-
-    static defaultProps = {
-        menu: {
-            0: [],
-            1: [],
-            2: [],
-            3: [],
-            4: [],
-        }
-    };
-
-    onChange = (activeKey) => {
-        this.setState({activeKey});
-        // this.props.switchDay(activeKey);
-    };
 
     render() {
         return (
-            <Tabs className="DayTabs" onChange={this.onChange} activeKey={this.state.activeKey}>
+            <Tabs className="DayTabs" onChange={this.props.onTabChange} activeKey={this.props.activeKey}>
                 <TabPane tab="Mon" key="0" className="DayTabsPane">
                     <Row>
                         {this.props.menu['0'].map((item) => {
@@ -93,23 +71,6 @@ class DayTabs extends React.Component {
         );
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        day: state.day,
-        menu: state.menu,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        switchDay: day => {
-            return dispatch(switchDay(day));
-        },
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DayTabs);
 
 
 
