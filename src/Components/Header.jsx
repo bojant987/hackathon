@@ -68,12 +68,12 @@ class AppHeader extends React.Component {
                             </Menu.Item>
                             <Menu.Item key="/food" className="Navigation__item">
                                 <Link to="/food">
-                                    <Icon type="smile-o" />Feeling lucky
+                                    <Icon type="rocket" />Feeling lucky!
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="/profile" className="Navigation__item">
                                 <Link to="/profile">
-                                    <Icon type="user" />Profile
+                                    <Icon type="like-o" />Hall of Fame
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="/manageorders" className="Navigation__item">
@@ -86,7 +86,7 @@ class AppHeader extends React.Component {
                                 key="/options"
                                 className="Navigation__options"
                                 style={this.state.isDropdownOpen
-                                    ? { "backgroundColor": "#1890ff" }
+                                    ? { "backgroundColor": "#52b17a" }
                                     : { "backgroundColor": "transparent" }}
                             >
                                 <Icon type="caret-down" className="Navigation__optionsButtonIcon" />

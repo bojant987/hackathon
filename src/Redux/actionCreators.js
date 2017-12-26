@@ -1,4 +1,5 @@
 import axios from 'axios';
+import querystring from 'query-string';
 
 import baseUrl from './constants/baseUrl';
 import actionTypes from './constants/actionTypes';
@@ -110,7 +111,15 @@ export function saveOrder(day, name) {
 
 		const foodItems = store.getState().order.items[day];
 
-		axios.post(baseUrl+'order', JSON.stringify({day, name, foodItems})).then(response => {
+		console.log(store.getState().order);
+
+		const data = {
+			day,
+			name,
+			foodList: foodItems,
+		}
+
+		axios.post(baseUrl+'order?'+querystring.stringify(data)).then(response => {
 			localStorage.setItem('name', name);
 			dispatch(saveOrderSuccess());
 		}).catch(error => {

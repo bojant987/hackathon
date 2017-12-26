@@ -39,14 +39,14 @@
 }
 
 .ant-card-overwrite--checked {
-    border: 2px solid green;
+    border: 2px solid $green;
 
     &:hover {
-        border-color: green;
+        border-color: $green;
     }
 
     .ant-card-cover {
-        background-color: green;
+        background-color: $green;
         background-blend-mode: multiply;
 
         img {
