@@ -23,9 +23,18 @@
 	}
 
 	.ant-card-actions {
-		li span {
-			width: 100%;
-		}
+		li {
+            margin: 0;
+
+            span {
+                display: inline-block;
+                width: 100%;
+
+                span {
+                    padding: 10px 0;
+                }
+            }
+        }
 	}
 }
 

@@ -26,7 +26,6 @@ export default class CardComponent extends React.Component {
 				cover={<img alt={this.props.item.title} src={this.props.item.photo_uri} />}
 				actions={[
 					<span
-                        className="h-fullWide"
                         onClick={this.handleSelection}
                         style={ this.props.selected ? { "color": "#1890ff" } : { "color": "rgba(0, 0, 0, 0.65)" } }
                     >

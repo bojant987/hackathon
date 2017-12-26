@@ -50,7 +50,7 @@ class AppHeader extends React.Component {
                             {/*<Link to="/">*/}
                                 {/**/}
                             {/*</Link>*/}
-                            <span className="Navigation__brandText">Order it!</span>
+                            <span className="Navigation__brandText logoIcon">Order it!</span>
                         </Menu.Item>
                     </Menu>
                     {!this.state.isMenuCollapsed
