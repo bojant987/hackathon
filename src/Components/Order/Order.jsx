@@ -2,6 +2,8 @@ import React from 'react';
 import { Layout } from 'antd';
 const { Content } = Layout;
 
+import DayTabs from './DayTabs';
+
 export default class Order extends React.Component {
 
 
@@ -9,7 +11,7 @@ export default class Order extends React.Component {
         return(
             <Layout>
                 <Content>
-                    Order
+                    <DayTabs />
                 </Content>
             </Layout>
         );
