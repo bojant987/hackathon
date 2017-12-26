@@ -13,7 +13,10 @@ export default class Daily extends React.Component {
     render() {
         // console.log(this.props.data);
         const data = this.props.data.orders && this.props.data.orders.length > 0 ? this.props.data.orders.map((item) => {
-            item.sum = item.sum + ' rsd';
+            if (item.sum && typeof item.sum !== 'string') {
+                item.sum = `${item.sum} rsd`;
+
+            }
             item.key = item.name;
             return item;
         }) : [];
