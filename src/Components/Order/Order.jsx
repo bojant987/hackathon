@@ -62,6 +62,7 @@ class Order extends React.Component {
                         menuAll={this.props.menuAll}
                         addFood={this.props.addItem}
                         removeFood={this.props.removeItem}
+                        selectedItems={this.props.order}
                     />
                 </Content>
             </Layout>
